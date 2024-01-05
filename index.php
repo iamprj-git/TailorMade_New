@@ -16,24 +16,30 @@
     </head>
 
     <body>
-        <div class="header-part">
+        <div class="message-notification">
+           This is message.
+        </div>
+        
+        <div class="top-bar">
             <div class="circle-container">
-                <div class="circle circle1">1</div>
-                <div class="text-between">Destination</div>
-                <div class="circle circle2">2</div>
-                <div class="text-between">Preferred Activities</div>
-                <div class="circle circle3">3</div>
-                <div class="text-between">Travel Detail</div>
-                <div class="circle circle4">4</div>
-                <div class="text-between">Budget</div>
-                <div class="circle circle5">5</div>
-                <div class="text-between">Submit</div>
+                <div> <div class="circle circle1">1</div>
+                <div class="text-between">Destination</div></div>
+               <div><div class="circle circle2">2</div>
+                <div class="text-between">Preferred Activities</div></div>
+                <div> <div class="circle circle3">3</div>
+                <div class="text-between">Travel Detail</div></div>
+               <div><div class="circle circle4">4</div>
+                <div class="text-between">Budget</div></div>
+                <div><div class="circle circle5">5</div>
+                <div class="text-between">Submit</div></div>
+                
             </div>
         </div>
-        <div class="container-fluid container tailormade-container">
+        <div class="tailormade-container container">
+            <h2 class="form-title text-center">Destination</h2>
             <form id="tailormade-form" name="tailormade-form" class="form" action="./send.php" method="post">
 
-                <div class="step step-1">
+                <div class="step step-1" data-title="Destination">
 
                     <!-- Hidden inputs -->
                     <input type="checkbox" name="country[]" id="nepal" value="nepal" class="country hidden">
@@ -63,7 +69,7 @@
 
                 </div>
 
-                <div class="step step-2">
+                <div class="step step-2" data-title="Prefered activities">
                     <div class="d-flex flex-row">
                         <div class="activities">
                             <div class="form-check form-switch ">
@@ -121,7 +127,7 @@
                     </div>
                 </div>
 
-                <div class="step step-3">
+                <div class="step step-3 " data-title="Travel Detail">
                     <div class="flex-responsive">
 
                         <div class="d-flex flex-column">
@@ -161,7 +167,7 @@
                                     <p>Group</p>
 
                                 </label>
-                                <input type="checkbox" name="travels-with[]" value="solo" id="solo" hidden>
+                                <input type="checkbox" name="travels-with[]" value="solo" id="solo" checked hidden>
                                 <input type="checkbox" name="travels-with[]" value="Family" id="family" hidden>
                                 <input type="checkbox" name="travels-with[]" value="couple" id="couple" hidden>
                                 <input type="checkbox" name="travels-with[]" value="group" id="group" hidden>
@@ -210,7 +216,7 @@
                     </div>
                 </div>
 
-                <div class="step step-4">
+                <div class="step step-4" data-title="Budget">
                     <div class="flex-responsive">
                         <div class="d-flex flex-column">
                             <div class="icon-box4">
@@ -236,7 +242,7 @@
                                     <!-- Replace with your desired Font Awesome icon -->
                                 </div>
                                 <div class="text2">
-                                    select your preferred lodging type
+                                    Accomodation
                                 </div>
                             </div>
                             <div class="grid mt-2 tiles lodging">
@@ -283,7 +289,7 @@
                 </div>
 
 
-                <div class="step step-5">
+                <div class="step step-5" data-title="Personal details">
                     <div class="flex-responsive">
                         <div class="d-flex flex-column set-gap">
                             <div class="icon-box">
@@ -300,11 +306,11 @@
 
                                     <div class="d-flex set-gap">
 
-                                        <input type="radio" class="btn-check" name="title" id="mr" autocomplete="off"
+                                        <input type="radio" class="btn-check" name="title" id="mr" value="Mr" autocomplete="off"
                                             checked>
                                         <label class="btn btn-outline-secondary" for="mr">Mr.</label>
 
-                                        <input type="radio" class="btn-check" name="title" id="mrs" autocomplete="off">
+                                        <input type="radio" class="btn-check" name="title" id="mrs" value="Mrs" autocomplete="off">
                                         <label class="btn btn-outline-secondary" for="mrs">Mrs.</label>
 
                                         <label for="full-name" hidden>Full Name: </label>
@@ -316,8 +322,8 @@
                                     <input type="email" class="personal-info" id="email" name="email" placeholder="Email">
                                     <span style="color:red" class="formEmailError"></span>
 
-                                    <label for="phone" hidden>Phone: </label>
-                                    <input type="tel" class="personal-info" id="phone" name="phone-skype" placeholder="Phone/Skype number">
+                                    <label for="phone" hidden>Whatsapp: </label>
+                                    <input type="tel" class="personal-info" id="phone" name="phone-skype" placeholder="Whatsapp number">
 
                                     <label for="nationality" hidden>Nationality: </label>
                                     <input type="text" class="personal-info" id="nationality" name="nationality" placeholder="Nationality">
@@ -368,12 +374,13 @@
                                 placeholder="Tell us more about you. What you are particularly interested in; anything that can help us help you."
                                 rows="5" name="add-info"></textarea>
 
-                            <label for="found-by" hidden>How did you find us?</label>
+                            <h4 class="mt-3">
+                               <label for="found-by">How did you find us?</label> 
+                            </h4>
 
                             <select class="form-select form-select-lg my-3" name="found-by" id="found-by"
-                                aria-label=".form-select-lg example">
-                                <option selected disabled>How Did You Find Us?</option>
-                                <option value="search engine">Search Engine</option>
+                                aria-label=".form-select-lg example" value="N/A">
+                                <option selected value="search engine">Search Engine</option>
                                 <option value="friends">Friends</option>
                                 <option value="facebook">Facebook</option>
                                 <option value="trip advisor">Trip Advisor</option>
@@ -394,6 +401,9 @@
                 </div>
             </form>
         </div>
+        
+          
+        
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -404,7 +414,40 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
         <script src="script.js"></script>
+        <script>
 
+          const messageBox=document.querySelector(".message");
+          
+        function getCookie(cname) {
+         let name = cname + "=";
+         let decodedCookie = decodeURIComponent(document.cookie);
+         let ca = decodedCookie.split(';');
+         for(let i = 0; i <ca.length; i++) {
+              let c = ca[i];
+            while (c.charAt(0) == ' ') {
+             c = c.substring(1);
+            }
+           if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+           }
+        }
+  return "";
+}   if(getCookie("message")){
+     messageBox.innerText=getCookie("message");
+     window.scrollTo(0, 0);
+     messageBox.classList.toggle("show-message");
+          setTimeout(() => {
+            messageBox.classList.toggle("show-message");
+          }, 5000);
+
+     const currentDate = new Date();
+     currentDate.setTime(currentDate.getTime() + 5000);
+     let expires = "expires="+ currentDate.toUTCString();
+     document.cookie='message=;'+ expires + "; path=/TailorMade/";
+    }
+     
+
+        </script>
 
     
 

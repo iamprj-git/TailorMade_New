@@ -2,23 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=h1, initial-scale=1.0">
-    <title> Client details for tour </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client details for tour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color:#095a5b;
+        }
+        .details-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        span {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    country: {{country}}<br>
-    adventure: {{adventure}}<br>
-    own description: {{own-description}}<br>
-    travels with: {{travels-with}}<br>
-    date from to: {{date-from-to}}<br>
-    est-budget: {{est-budget}}<br>
-    lodge: {{lodge}}<br>
-    fullname: {{full-name}}<br>
-    email: {{email}}<br>
-    phone-skype: {{phone-skype}}<br>
-    nationality: {{nationality}}<br>
-    Best way to connect: {{contact-via}}<br>
-    additional info: {{add-info}}<br>
-    found by: {{found-by}}<br>
+    <h1>Client Details for Tour</h1>
+    <div class="details-container">
+        
+        <h2>{{title}}. {{full-name}}</h2>
+        <p><span>Country:</span> <span>{{country}}</span></p>
+        <p><span>Adventure:</span> <span>{{adventure}}</span></p>
+        <p><span>Own Description:</span> <span>{{own-description}}</span></p>
+        <p><span>Travels with:</span> <span>{{travels-with}}</span></p>
+        <p><span>Date from to:</span> <span>{{date-from-to}}</span></p>
+        <p><span>Est-Budget:</span> <span>{{est-budget}}</span></p>
+        <p><span>Accomodation:</span> <span>{{lodge}}</span></p>
+        <p><span>Email:</span> <span>{{email}}</span></p>
+        <p><span>Whatsapp:</span> <span>{{phone-skype}}</span></p>
+        <p><span>Nationality:</span> <span>{{nationality}}</span></p>
+        <p><span>Best Way to Connect:</span> <span>{{contact-via}}</span></p>
+        <p><span>Additional Info:</span> <span>{{add-info}}</span></p>
+        <p><span>Found By:</span> <span>{{found-by}}</span></p>
+        
+    </div>
 </body>
 </html>

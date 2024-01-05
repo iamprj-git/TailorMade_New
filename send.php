@@ -7,51 +7,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 if(isset($_POST['send'])){
-    var_dump($_POST);
-
-    echo "<br>-------------------------------";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    $countries=$_POST['country'];
-    $countries = join(", ",$countries);
-    echo "countries: " . $countries. "<br>";
-
-    $adventures = $_POST['adventure'];
-    $adventures = join(", ", $adventures);
-    echo "adventures: " . $adventures . "<br>";
-
-    $description=$_POST['own-description'];
-    echo "description: " . $description . "<br>";
-    $travels_with=$_POST['travels-with'][0];
-    echo "travels_with: " . $travels_with . "<br>";
-    $travel_date=$_POST['date-from-to'];
-    echo "travel_date: " . $travel_date . "<br>";
-    $est_budget=$_POST['est-budget'];
-    echo "est_budget: " . $est_budget . "<br>";
-    $lodge=$_POST['lodge'][0];
-    echo "lodge: " . $lodge . "<br>";
-    $name=$_POST['full-name'];
-    echo "name: " . $name . "<br>";
-    $email=$_POST['email'];
-    echo "email: " . $email . "<br>";
-    $phone=$_POST['phone-skype'];
-    echo "phone: " . $phone . "<br>";
-    $nationality=$_POST['nationality'];
-    echo "nationality: " . $nationality . "<br>";
-
-    $contact_via=$_POST['contact-via'];
-    $contact_via= join(", ", $contact_via);
-    echo "contact_via: " . $contact_via . "<br>";
-
-    $additional_information=$_POST['add-info'];
-    echo "additional_information: " . $additional_information . "<br>";
-    $found_by=$_POST['found-by'];
-    echo "found_by: " . $found_by . "<br>";
-
-    
 // Reading file content
 $myfile = fopen("main.html", "r") or die("Unable to open file!");
 $file_content = " ";
@@ -65,6 +20,9 @@ fclose($myfile);
 
 //writing post value in HTML
 foreach($_POST as $key => $value) {
+    if ($key === 'date-from-to' && empty($value)) {
+        $value="decide later";
+    }
     if (gettype($value) == "array"){
         $value = join(", ", $value);
     }
@@ -85,32 +43,39 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'prajwalsiwakoti39@gmail.com';                     //SMTP username
-    $mail->Password   = 'xosp mbms dynk gjgv ';                               //SMTP password
+    $mail->Password   = 'ayqh xbir usup fcnq ';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('prajwalsiwakoti39@gmail.com', 'Wilderness');
+    $mail->setFrom('prajwalsiwakoti39@gmail.com','wilderness-outdoors');
     $mail->addAddress('techsayatri@gmail.com', 'Reciever');     //Add a recipient
-    
+    if (!empty($_POST['email'])){
+        $mail->addBcc($_POST["email"]);
+    }
     
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'New Tailormade Tour Details';
     echo "sending main.html ... <br> ";
     $mail->Body = $file_content;
     
 
     $mail->send();
-    echo 'Message has been sent' . "<br>";
+    setcookie("message","Form submitted sucessfully",0, "/TailorMade/","", false, false);
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}" . "<br>";
+    setcookie("message","Form didn't submitted sucessfully",0, "/TailorMade/","http://localhost", false, false);
 }
 }
-header("Location: /tailormode/");
+
+$redirectUrl=$_SERVER["HTTP_REFERER"];
+header("Location: $redirectUrl");
+
 ?>
+

@@ -5,16 +5,44 @@ body {
     background-color: #f2f2f2;
 }
 
-.header-part{
+.top-bar{
     width:75%;
     background-color: white;
-    border-radius:10px;
+    border-radius:60px;
     margin: auto;
-    padding: 1.5rem 1rem;
+    padding: 0.8rem 1rem;
     box-shadow: 10px 25px 30px rgba(0,0,0,0.3);
-    font-family:'Franklin Gclass=" container tailormade-container"othic Medium', 'Arial Narrow', Arial, sans-serif
- 
+    font-family:'Franklin Gclass="  tailormade-container"othic Medium', 'Arial Narrow', Arial, sans-serif;
+   
  }
+ .circle-container > div{
+    display:flex;
+ }
+
+ .message-notification{
+    position: absolute;
+    top:4rem;
+    left:2px;
+    transform: translateX(-100%);
+    opacity: 0;
+    padding: 10px 15px;
+    background-color: #085f60e7;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    z-index: 99;
+
+    transition: all 200ms ease-in-out;
+ }
+
+ .show-message{
+    transform: translate(0);
+    opacity: 1;
+ }
+
+.form-title{
+    color:#095a5b;
+}
 .tiles label{
     cursor: pointer;
     padding:.7rem;
@@ -45,7 +73,7 @@ body {
 
 
 
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+.tailormade-container {
     width: 75% !important; 
     margin-right: 33px;
     margin-left: 80px;
@@ -159,7 +187,7 @@ body {
 
 
 @media (max-width:753px){
-    .header-part{
+    .top-bar{
         width: 86%;
     }
     .circle-container{
@@ -167,7 +195,7 @@ body {
     }
 }
 @media (max-width:668px){
-    .header-part{
+    .top-bar{
         width: 100%;
     }
     
@@ -176,7 +204,7 @@ body {
 
 
 @media screen and (min-width: 768px) and (max-width:1024px) {
-    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    .tailormade-container {
         width: 80% !important; 
         margin-right: 40px;
         margin-left: 50px;
@@ -193,7 +221,7 @@ body {
 
 
 @media screen and (min-width:481px) and (max-width:760px) {
-    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    .tailormade-container{
         width: 80% !important; 
         margin-right: 50px;
         margin-left: 50px;
@@ -380,24 +408,18 @@ gap:7px;
     display: none;
 }
 
-.container {
+.tailormade-container {
     --form-check-input-checked-border-color: rgba(0, 0, 0, 0.2) ;
    /* max-width: 600px;*/
-    margin: auto;
     background-color: #fff;
     padding:20px;
     border-radius:20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-    position:absolute;
-    top:23%;
-    left:50%;
-
     border:3px solid #095a5b;
-    transform: translateX(-50%);
+    margin-top:4rem;
 }
 @media(max-width:480px){
-    .container{
+    .tailormade-container{
     top: 16%;
     left: 49%;
     }

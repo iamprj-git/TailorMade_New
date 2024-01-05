@@ -39,13 +39,21 @@ addTileSelector('.tiles.lodging label');
 addTileSelector('.tiles.travel-date label')
 
 
+const titleH2= document.querySelector(".form-title");
+function changeTitle(stepElement){
+    titleH2.innerText=stepElement.dataset.title;
+
+}
+
 let currentStep = 1;
 document.querySelector(`.circle1`).style.filter = 'contrast(100%)';
 function nextStep(step) {
     if (step < 5) {
 
         document.querySelector(`.step-${step}`).style.display = 'none';
-        document.querySelector(`.step-${step + 1}`).style.display = 'block';
+        const currentStep=document.querySelector(`.step-${step + 1}`);
+        currentStep.style.display="block";
+        changeTitle(currentStep);
         document.querySelector(`.circle${step+1}`).style.filter = 'contrast(100%)';
         currentStep = step + 1;
     }
@@ -59,7 +67,9 @@ function nextStep(step) {
 function prevStep(step) {
     if (step > 1) {
         document.querySelector(`.step-${step}`).style.display = 'none';
-        document.querySelector(`.step-${step - 1}`).style.display = 'block';
+        const currentStep=document.querySelector(`.step-${step - 1}`);
+        currentStep.style.display="block";
+        changeTitle(currentStep);
         document.querySelector(`.circle${step}`).style.filter = 'contrast(35%)';
         currentStep = step - 1;
     }
@@ -213,12 +223,12 @@ requiredInputFields.map( (inputField) =>{
     }
 }  )
 
-submitBtn.onclick = (e) => {
-    e.preventDefault();
+//submitBtn.onclick = (e) => {
+  //  e.preventDefault();
 
-    step5.querySelector(".errormsg").innerText = "*All fields are required!"
-    setTimeout(() => {
-        step5.querySelector(".errormsg").innerText = ""
-    }, 3000)
+    //step5.querySelector(".errormsg").innerText = "*All fields are required!"
+    //setTimeout(() => {
+      //  step5.querySelector(".errormsg").innerText = ""
+    //}, 3000)
 
-}
+//}
